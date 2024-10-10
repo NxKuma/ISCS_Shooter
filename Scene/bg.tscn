@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfwpt7hhliyk2"]
+
+[ext_resource type="Script" path="res://Script/bg.gd" id="1_l2f7b"]
+[ext_resource type="Texture2D" uid="uid://c2emlgwmigy6q" path="res://icon.svg" id="1_v3chm"]
+
+[node name="BG" type="Node2D"]
+script = ExtResource("1_l2f7b")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.921569, 0.658824, 0.454902, 0.352941)
+offset_right = 3390.0
+offset_bottom = 648.0
+texture = ExtResource("1_v3chm")
