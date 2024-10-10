@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwfv5eapxvdhn"]
+[gd_scene load_steps=4 format=3 uid="uid://cwfv5eapxvdhn"]
 
 [ext_resource type="PackedScene" uid="uid://cvs6bk0damlml" path="res://Scene/player.tscn" id="1_2qs2a"]
 [ext_resource type="PackedScene" uid="uid://dfwpt7hhliyk2" path="res://Scene/bg.tscn" id="1_lx4vk"]
+[ext_resource type="PackedScene" uid="uid://c64584hh27ewm" path="res://Scene/lizard_enemy.tscn" id="3_862p7"]
 
 [node name="Main" type="Node2D"]
 
@@ -9,3 +10,6 @@
 
 [node name="Player" parent="." instance=ExtResource("1_2qs2a")]
 position = Vector2(136, 336)
+
+[node name="LizardEnemy" parent="." instance=ExtResource("3_862p7")]
+position = Vector2(1286, 318)

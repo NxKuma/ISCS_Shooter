@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://c64584hh27ewm"]
+
+[ext_resource type="Texture2D" uid="uid://c2emlgwmigy6q" path="res://icon.svg" id="1_blekr"]
+[ext_resource type="Script" path="res://Script/lizard_enemy.gd" id="1_thh88"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhve7"]
+atlas = ExtResource("1_blekr")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_beo5l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhve7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nvknp"]
+radius = 45.0999
+
+[node name="LizardEnemy" type="Area2D"]
+script = ExtResource("1_thh88")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.685733, 8.42288e-07, 3.85046e-07, 1)
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_beo5l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nvknp")
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.2
+autostart = true

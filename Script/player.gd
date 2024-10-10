@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export var speed = 500.0
+@export var speed = 400.0
 var screen_size
 const PROJECTILE = preload("res://Scene/projectile.tscn")
 
