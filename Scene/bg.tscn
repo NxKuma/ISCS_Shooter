@@ -1,13 +1,66 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfwpt7hhliyk2"]
+[gd_scene load_steps=7 format=3 uid="uid://dfwpt7hhliyk2"]
 
-[ext_resource type="Script" path="res://Script/bg.gd" id="1_l2f7b"]
-[ext_resource type="Texture2D" uid="uid://c2emlgwmigy6q" path="res://icon.svg" id="1_v3chm"]
+[ext_resource type="Texture2D" uid="uid://bn6bn00wow577" path="res://Art/Parallax/Sky4.png" id="3_0epnu"]
+[ext_resource type="Texture2D" uid="uid://y0vyfwq51hgg" path="res://Art/Parallax/Sky1.png" id="4_t7xwp"]
+[ext_resource type="Texture2D" uid="uid://c6f3fp7cvp1v" path="res://Art/Parallax/BG3.png" id="5_ajtrf"]
+[ext_resource type="Texture2D" uid="uid://dfm2g1sighq37" path="res://Art/Parallax/Sky2.png" id="5_kbtni"]
+[ext_resource type="Texture2D" uid="uid://dyxee5fe711de" path="res://Art/Parallax/Sky3.png" id="6_wiyoy"]
 
-[node name="BG" type="Node2D"]
-script = ExtResource("1_l2f7b")
+[sub_resource type="GDScript" id="GDScript_cp3cu"]
+script/source = "extends Control
 
-[node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(0.921569, 0.658824, 0.454902, 0.352941)
-offset_right = 3390.0
-offset_bottom = 648.0
-texture = ExtResource("1_v3chm")
+@onready var cloud_1_sprite: Sprite2D = $Cloud1Sprite
+var x: int = 0
+
+func _process(delta: float) -> void:
+	x += 5
+	cloud_1_sprite.set_region_rect(Rect2(Vector2(x,0),Vector2(1152,452)))
+"
+
+[node name="BG" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = SubResource("GDScript_cp3cu")
+
+[node name="ParallaxBG" type="ParallaxBackground" parent="."]
+scroll_ignore_camera_zoom = true
+
+[node name="Sky" type="ParallaxLayer" parent="ParallaxBG"]
+motion_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBG/Sky"]
+scale = Vector2(1, 1.43363)
+texture = ExtResource("3_0epnu")
+centered = false
+
+[node name="Cloud1" type="ParallaxLayer" parent="ParallaxBG"]
+motion_scale = Vector2(0.8, 0.8)
+
+[node name="Cloud2" type="ParallaxLayer" parent="ParallaxBG"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBG/Cloud2"]
+scale = Vector2(1, 1.43363)
+texture = ExtResource("5_kbtni")
+centered = false
+
+[node name="Cloud3" type="ParallaxLayer" parent="ParallaxBG"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBG/Cloud3"]
+scale = Vector2(1, 1.43363)
+texture = ExtResource("6_wiyoy")
+centered = false
+
+[node name="Cloud4" type="ParallaxLayer" parent="ParallaxBG"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBG/Cloud4"]
+scale = Vector2(2.00174, 1.43363)
+texture = ExtResource("5_ajtrf")
+centered = false
+
+[node name="Cloud1Sprite" type="Sprite2D" parent="."]
+texture_repeat = 2
+scale = Vector2(1, 1.43363)
+texture = ExtResource("4_t7xwp")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 1152, 452)
