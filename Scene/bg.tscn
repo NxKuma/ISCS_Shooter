@@ -1,66 +1,125 @@
-[gd_scene load_steps=7 format=3 uid="uid://dfwpt7hhliyk2"]
+[gd_scene load_steps=11 format=3 uid="uid://dfwpt7hhliyk2"]
 
 [ext_resource type="Texture2D" uid="uid://bn6bn00wow577" path="res://Art/Parallax/Sky4.png" id="3_0epnu"]
 [ext_resource type="Texture2D" uid="uid://y0vyfwq51hgg" path="res://Art/Parallax/Sky1.png" id="4_t7xwp"]
 [ext_resource type="Texture2D" uid="uid://c6f3fp7cvp1v" path="res://Art/Parallax/BG3.png" id="5_ajtrf"]
 [ext_resource type="Texture2D" uid="uid://dfm2g1sighq37" path="res://Art/Parallax/Sky2.png" id="5_kbtni"]
+[ext_resource type="Texture2D" uid="uid://puld7v1rurb4" path="res://Art/Parallax/BG6.png" id="5_wnig2"]
+[ext_resource type="Texture2D" uid="uid://d2nj5ntuhpprx" path="res://Art/Parallax/BG5.png" id="6_53503"]
 [ext_resource type="Texture2D" uid="uid://dyxee5fe711de" path="res://Art/Parallax/Sky3.png" id="6_wiyoy"]
+[ext_resource type="Texture2D" uid="uid://cj2jqkomtafs6" path="res://Art/Parallax/BG4.png" id="7_ra2yi"]
+[ext_resource type="Texture2D" uid="uid://csjpdj8b7bnpg" path="res://Art/Parallax/BG8.png" id="9_vdtau"]
 
 [sub_resource type="GDScript" id="GDScript_cp3cu"]
 script/source = "extends Control
 
 @onready var cloud_1_sprite: Sprite2D = $Cloud1Sprite
+@onready var cloud_2_sprite: Sprite2D = $Cloud2Sprite
+@onready var cloud_3_sprite: Sprite2D = $Cloud3Sprite
+@onready var forest_dark: Sprite2D = $FOREST_DARK
+@onready var forest_green: Sprite2D = $FOREST_GREEN
+@onready var forest_lg: Sprite2D = $FOREST_LG
+@onready var forest_light: Sprite2D = $FOREST_LIGHT
+@onready var cloud: Sprite2D = $CLOUD
+
 var x: int = 0
 
+func parallax(sprite: Sprite2D, x: float, speed: float):
+	sprite.set_region_rect(Rect2(Vector2(x*speed,0),Vector2(1152,452)))
+
 func _process(delta: float) -> void:
-	x += 5
-	cloud_1_sprite.set_region_rect(Rect2(Vector2(x,0),Vector2(1152,452)))
+	x += 1
+	parallax(cloud_1_sprite, x, 1)
+	parallax(cloud_2_sprite, x, 0.6)
+	parallax(cloud_3_sprite, x, 0.4)
+	parallax(forest_dark, x, 0.8)
+	parallax(forest_green, x, 1.6)
+	parallax(forest_lg, x, 1.4)
+	parallax(forest_light, x, 1.8)
+	parallax(cloud, x, 1.8)
 "
 
 [node name="BG" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = SubResource("GDScript_cp3cu")
 
-[node name="ParallaxBG" type="ParallaxBackground" parent="."]
-scroll_ignore_camera_zoom = true
-
-[node name="Sky" type="ParallaxLayer" parent="ParallaxBG"]
-motion_scale = Vector2(0, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBG/Sky"]
-scale = Vector2(1, 1.43363)
+[node name="Blue" type="Sprite2D" parent="."]
+texture_repeat = 2
+scale = Vector2(1.071, 1.5)
 texture = ExtResource("3_0epnu")
-centered = false
-
-[node name="Cloud1" type="ParallaxLayer" parent="ParallaxBG"]
-motion_scale = Vector2(0.8, 0.8)
-
-[node name="Cloud2" type="ParallaxLayer" parent="ParallaxBG"]
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBG/Cloud2"]
-scale = Vector2(1, 1.43363)
-texture = ExtResource("5_kbtni")
-centered = false
-
-[node name="Cloud3" type="ParallaxLayer" parent="ParallaxBG"]
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBG/Cloud3"]
-scale = Vector2(1, 1.43363)
-texture = ExtResource("6_wiyoy")
-centered = false
-
-[node name="Cloud4" type="ParallaxLayer" parent="ParallaxBG"]
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBG/Cloud4"]
-scale = Vector2(2.00174, 1.43363)
-texture = ExtResource("5_ajtrf")
 centered = false
 
 [node name="Cloud1Sprite" type="Sprite2D" parent="."]
 texture_repeat = 2
-scale = Vector2(1, 1.43363)
 texture = ExtResource("4_t7xwp")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 1152, 452)
+
+[node name="Cloud2Sprite" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(0, 66)
+texture = ExtResource("6_wiyoy")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 1152, 452)
+
+[node name="Cloud3Sprite" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(0, 66)
+texture = ExtResource("5_kbtni")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 1152, 452)
+
+[node name="FOREST_DARK" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(0, -190)
+scale = Vector2(2, 2)
+texture = ExtResource("5_wnig2")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 576, 452)
+
+[node name="FOREST_GREEN" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(0, -200)
+scale = Vector2(2, 2)
+texture = ExtResource("6_53503")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 576, 452)
+
+[node name="FOREST_LG" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(0, -225)
+scale = Vector2(2, 2)
+texture = ExtResource("7_ra2yi")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 576, 452)
+
+[node name="FOREST_LIGHT" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(0, -250)
+scale = Vector2(2, 2)
+texture = ExtResource("5_ajtrf")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 576, 452)
+
+[node name="CLOUD" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(0, -15)
+scale = Vector2(2, 2)
+texture = ExtResource("9_vdtau")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 576, 452)
