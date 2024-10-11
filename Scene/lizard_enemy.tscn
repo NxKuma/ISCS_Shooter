@@ -31,8 +31,3 @@ sprite_frames = SubResource("SpriteFrames_beo5l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_nvknp")
-
-[node name="Timer" type="Timer" parent="."]
-process_callback = 0
-wait_time = 0.2
-autostart = true

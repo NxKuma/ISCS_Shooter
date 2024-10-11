@@ -26,3 +26,4 @@ func _process(delta: float) -> void:
 		new_projectile.direction = Vector2.RIGHT
 		new_projectile.global_position = global_position
 		add_sibling(new_projectile)
+		

@@ -13,3 +13,7 @@ func _on_body_entered(body: Node2D) -> void:
 		pass
 	else:
 		pass
+
+
+func _on_life_timeout() -> void:
+	queue_free()
