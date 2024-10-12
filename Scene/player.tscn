@@ -1,7 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://cvs6bk0damlml"]
+[gd_scene load_steps=14 format=3 uid="uid://cvs6bk0damlml"]
 
 [ext_resource type="Script" path="res://Script/player.gd" id="1_i7681"]
 [ext_resource type="Texture2D" uid="uid://cceijpmuuox3c" path="res://Art/Sprites/Player.png" id="2_6btb3"]
+[ext_resource type="Shader" uid="uid://b0q2drwnivuq7" path="res://Shader/ShotHit.tres" id="2_crmws"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kfiyq"]
+shader = ExtResource("2_crmws")
+shader_parameter/Enabled = null
+shader_parameter/Tint = Color(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_20qty"]
 atlas = ExtResource("2_6btb3")
@@ -69,6 +75,7 @@ region = Rect2(96, 0, 32, 32)
 script = ExtResource("1_i7681")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Player"]]
+material = SubResource("ShaderMaterial_kfiyq")
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_ujyxu")
 animation = &"Shoot"

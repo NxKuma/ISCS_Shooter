@@ -6,6 +6,7 @@ extends CharacterBody2D
 const PROJECTILE = preload("res://Scene/projectile.tscn")
 var screen_size:Vector2
 var health:float  = 500
+var hit:bool = false
 
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -33,3 +34,4 @@ func _input(event):
 		new_projectile.global_position = Vector2(global_position.x + 42, global_position.y + 5)
 		add_sibling(new_projectile)
 		
+
