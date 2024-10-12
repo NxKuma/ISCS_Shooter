@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnrdo18p66qu6"]
+
+[ext_resource type="Script" path="res://Script/projectile.gd" id="1_bs78x"]
+[ext_resource type="Texture2D" uid="uid://c2emlgwmigy6q" path="res://icon.svg" id="2_oqgad"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dk6eo"]
+atlas = ExtResource("2_oqgad")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pcdyq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dk6eo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g1woo"]
+radius = 32.0
+
+[node name="Projectile" type="Area2D"]
+script = ExtResource("1_bs78x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_pcdyq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_g1woo")
+
+[node name="Life" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Life" to="." method="_on_life_timeout"]
