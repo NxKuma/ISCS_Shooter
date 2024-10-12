@@ -12,4 +12,4 @@ func _process(delta: float) -> void:
 
 	#deletes the lizard instance when it is sufficiently out of screen
 	if global_position < (Vector2.ZERO + Vector2(-300,-300)) or global_position > (screen_size + Vector2(300,300)):
-		queue_free() 
+		queue_free()

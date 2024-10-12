@@ -40,6 +40,7 @@ func _process(delta: float) -> void:
 "
 
 [node name="BG" type="Control"]
+modulate = Color(0.886275, 0.886275, 0.894118, 1)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

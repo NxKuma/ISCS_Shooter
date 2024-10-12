@@ -1,20 +1,35 @@
-[gd_scene load_steps=6 format=3 uid="uid://c64584hh27ewm"]
+[gd_scene load_steps=7 format=3 uid="uid://c64584hh27ewm"]
 
-[ext_resource type="Texture2D" uid="uid://c2emlgwmigy6q" path="res://icon.svg" id="1_blekr"]
 [ext_resource type="Script" path="res://Script/lizard_enemy.gd" id="1_thh88"]
+[ext_resource type="Texture2D" uid="uid://db0eacjnpo4xp" path="res://Art/Sprites/Enemy2.png" id="2_3ufgf"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qhve7"]
-atlas = ExtResource("1_blekr")
-region = Rect2(0, 0, 128, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfslf"]
+atlas = ExtResource("2_3ufgf")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7l35"]
+atlas = ExtResource("2_3ufgf")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_beo5l"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qhve7")
+"texture": SubResource("AtlasTexture_pfslf")
 }],
-"loop": true,
-"name": &"default",
+"loop": false,
+"name": &"Default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7l35")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_pfslf")
+}],
+"loop": false,
+"name": &"Shoot",
 "speed": 5.0
 }]
 
@@ -25,9 +40,15 @@ radius = 45.0999
 script = ExtResource("1_thh88")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.685733, 8.42288e-07, 3.85046e-07, 1)
-scale = Vector2(0.7, 0.7)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_beo5l")
+animation = &"Shoot"
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_nvknp")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
