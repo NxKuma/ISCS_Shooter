@@ -5,6 +5,7 @@ extends CharacterBody2D
 
 const PROJECTILE = preload("res://Scene/projectile.tscn")
 var screen_size:Vector2
+var health:float  = 500
 
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -17,8 +18,8 @@ func _process(delta: float) -> void:
 	else:
 		velocity = Vector2.ZERO
 	
-	position += velocity * delta
-	position = position.clamp(Vector2.ZERO, screen_size)
+	position += velocity * delta 
+	position = position.clamp(Vector2(32,32), Vector2((screen_size.x-160)/2,screen_size.y-32))
 	
 	move_and_slide()
 

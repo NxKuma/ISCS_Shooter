@@ -4,13 +4,17 @@ extends Area2D
 @export var direction:Vector2 = Vector2.LEFT
 
 @onready var animated_sprite_2d:AnimatedSprite2D = $AnimatedSprite2D
-@onready var timer:Timer = $Timer
+@onready var timer:Timer = $Reload
 @onready var particle:GPUParticles2D = $Particle2
 @onready var collision_shape_2d:CollisionShape2D = $CollisionShape2D
+@onready var wake:Timer = $Wake
 
 var shoot_speed:int = 1
 var screen_size:Vector2
 var is_hit:bool = false
+var is_dead:bool = false
+var health:int = 100
+
 const PROJECTILE = preload("res://Scene/projectile.tscn")
 
 func _ready():
@@ -36,19 +40,29 @@ func shoot():
 	add_sibling(new_projectile)
 
 
-func _on_timer_timeout():
-	if !is_hit:
-		shoot()
-
-
 func _on_area_entered(area):
-	if area.is_in_group("PlayerBullet") and !is_hit:
-		is_hit = true
+	if area.is_in_group("PlayerBullet") and !is_dead:
 		area.queue_free()
-		animated_sprite_2d.visible = false
-		collision_shape_2d.disabled = true
-		particle.emitting = true
-		set_process(false)
-		await get_tree().create_timer(1.0).timeout
-		queue_free()
+		is_hit = true
+		global_position.x += 20
+		health -= 20
+		animated_sprite_2d.material.set("shader_parameter/Enabled", true)
+		wake.start()
+		if health <= 0:
+			is_dead = true
+			animated_sprite_2d.visible = false
+			collision_shape_2d.disabled = true
+			particle.emitting = true
+			set_process(false)
+			await get_tree().create_timer(1.0).timeout
+			queue_free()
 		
+
+
+func _on_wake_timeout():
+	animated_sprite_2d.material.set("shader_parameter/Enabled", false)
+
+
+func _on_reload_timeout():
+	if !is_dead:
+		shoot()

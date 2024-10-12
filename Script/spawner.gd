@@ -16,5 +16,5 @@ func _on_timer_timeout() -> void:
 	#var snake = SNAKE_ENEMY.instantiate()
 	add_sibling(enemy)
 	enemy.position = Vector2(position.x ,position.y + random_height)
-	timer.wait_time = randi_range(1,4)
+	timer.wait_time = randi_range(1,2)
 	

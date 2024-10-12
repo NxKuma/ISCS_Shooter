@@ -18,15 +18,9 @@ func _process(delta: float) -> void:
 	translate(direction * speed * delta)
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.name == 'Player': 
-		print("Hello")
-	else:
-		pass
+	if body.name.contains('Player') and version !=0 : 
+		body.health -= 10
 
 func _on_life_timeout() -> void:
 	queue_free()
 
-#
-#func _on_area_entered(area):
-	#if area.name.contains("Enemy") and version == 0:
-		#queue_free()
