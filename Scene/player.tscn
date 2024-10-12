@@ -102,3 +102,9 @@ amount = 1
 process_material = SubResource("ParticleProcessMaterial_f0bao")
 texture = SubResource("AtlasTexture_eh0bb")
 one_shot = true
+
+[node name="Wake" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+
+[connection signal="timeout" from="Wake" to="." method="_on_wake_timeout"]

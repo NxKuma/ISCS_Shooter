@@ -8,7 +8,6 @@ extends Area2D
 @onready var wake:Timer = $Wake
 
 const PROJECTILE = preload("res://Scene/particle_effect.tscn")
-const SHUTTER = preload("res://Scene/Bullet_shatter.tscn")
 
 var screen_size:Vector2
 var is_hit:bool = false
@@ -28,10 +27,6 @@ func _process(delta: float) -> void:
 func _on_area_entered(area):
 	if area.is_in_group("PlayerBullet") and !is_dead:
 		area.queue_free()
-		var broke = SHUTTER.instantiate()
-		broke.position = area.position
-		broke.emitting = true
-		add_sibling(broke)
 		health -= 50
 		global_position.x += 20
 		animated_sprite_2d.material.set("shader_parameter/Enabled", true)

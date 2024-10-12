@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var animated_sprite_2d:AnimatedSprite2D = $AnimatedSprite2D
 @export var speed:int = 400.0
+@onready var wake:Timer = $Wake
 
 const PROJECTILE = preload("res://Scene/projectile.tscn")
 var screen_size:Vector2
@@ -35,3 +36,8 @@ func _input(event):
 		add_sibling(new_projectile)
 		
 
+
+
+func _on_wake_timeout():
+	animated_sprite_2d.material.set("shader_parameter/Enabled", false)
+	self.set_process(true)

@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://i4q0b7c4fae"]
+
+[ext_resource type="Texture2D" uid="uid://cghq7g5eeehst" path="res://Art/Sprites/Bullet.png" id="1_3bis3"]
+[ext_resource type="Script" path="res://Script/Bullet_shatter.gd" id="2_l05fu"]
+
+[sub_resource type="Curve" id="Curve_c5mb3"]
+_data = [Vector2(0.0333333, 1), 0.0, 0.0, 0, 0, Vector2(0.4, 0.725275), 0.0, 0.0, 0, 0, Vector2(0.726667, 0.472527), 0.0, 0.0, 0, 0, Vector2(0.886667, 0.0659341), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_tryu3"]
+curve = SubResource("Curve_c5mb3")
+
+[sub_resource type="Gradient" id="Gradient_ni2c6"]
+offsets = PackedFloat32Array(0, 0.47541, 0.770492, 1)
+colors = PackedColorArray(1, 0.968333, 0.62, 1, 0.97, 0.792167, 0, 1, 0.97, 0.5044, 0.097, 1, 0.6, 0.24, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_b28mc"]
+gradient = SubResource("Gradient_ni2c6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_48dup"]
+particle_flag_disable_z = true
+angle_min = -275.1
+angle_max = 32.4
+radial_velocity_min = 20.0
+radial_velocity_max = 100.0
+gravity = Vector3(0, 9, 0)
+scale_max = 3.0
+color_ramp = SubResource("GradientTexture1D_b28mc")
+alpha_curve = SubResource("CurveTexture_tryu3")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cg3o7"]
+atlas = ExtResource("1_3bis3")
+region = Rect2(16, 0, 16, 16)
+
+[node name="BulletSHatter" type="GPUParticles2D"]
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_48dup")
+texture = SubResource("AtlasTexture_cg3o7")
+one_shot = true
+explosiveness = 1.0
+randomness = 0.82
+script = ExtResource("2_l05fu")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

@@ -16,6 +16,7 @@ var is_dead:bool = false
 var health:int = 100
 
 const PROJECTILE = preload("res://Scene/projectile.tscn")
+const SHUTTER = preload("res://Scene/Bullet_shatter.tscn")
 
 func _ready():
 	timer.wait_time = shoot_speed
@@ -44,6 +45,10 @@ func _on_area_entered(area):
 	if area.is_in_group("PlayerBullet") and !is_dead:
 		area.queue_free()
 		is_hit = true
+		var broke = SHUTTER.instantiate()
+		broke.position = area.position
+		broke.emitting = true
+		add_sibling(broke)
 		global_position.x += 20
 		health -= 20
 		animated_sprite_2d.material.set("shader_parameter/Enabled", true)

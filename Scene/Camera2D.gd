@@ -6,12 +6,12 @@ extends Camera2D
 var rng = RandomNumberGenerator.new()
 var shake_strength: float = 0.0
 
-func apply_shake():
-	shake_strength = randomStrength
+func apply_shake(strenght: float):
+	shake_strength = strenght
 
 func _process(delta):
 	if Input.is_action_just_pressed("Shoot"):
-		apply_shake()
+		apply_shake(randomStrength)
 	
 	if shake_strength > 0:
 		shake_strength = lerp(shake_strength, 0.0, shakeFade * delta)
