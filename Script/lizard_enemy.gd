@@ -5,9 +5,12 @@ extends Area2D
 
 @onready var animated_sprite_2d:AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer:Timer = $Timer
+@onready var particle:GPUParticles2D = $Particle2
+@onready var collision_shape_2d:CollisionShape2D = $CollisionShape2D
 
 var shoot_speed:int = 1
 var screen_size:Vector2
+var is_hit:bool = false
 const PROJECTILE = preload("res://Scene/projectile.tscn")
 
 func _ready():
@@ -25,6 +28,7 @@ func _process(delta: float) -> void:
 
 func shoot():
 	var new_projectile = PROJECTILE.instantiate()
+	timer.start()
 	animated_sprite_2d.play("Shoot")
 	new_projectile.version = 2
 	new_projectile.direction = Vector2.LEFT
@@ -33,4 +37,18 @@ func shoot():
 
 
 func _on_timer_timeout():
-	shoot()
+	if !is_hit:
+		shoot()
+
+
+func _on_area_entered(area):
+	if area.is_in_group("PlayerBullet") and !is_hit:
+		is_hit = true
+		area.queue_free()
+		animated_sprite_2d.visible = false
+		collision_shape_2d.disabled = true
+		particle.emitting = true
+		set_process(false)
+		await get_tree().create_timer(1.0).timeout
+		queue_free()
+		

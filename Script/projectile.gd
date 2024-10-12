@@ -8,20 +8,25 @@ extends Area2D
 func _ready():
 	if version == 0:
 		animated_sprite_2d.play("Player")
+		add_to_group("PlayerBullet")
 	else:
 		animated_sprite_2d.play("Enemy")
 		animated_sprite_2d.flip_h = true
-	
-		
+		add_to_group("EnemyBullet")
 
 func _process(delta: float) -> void:
 	translate(direction * speed * delta)
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == 'Player': 
-		pass
+		print("Hello")
 	else:
 		pass
 
 func _on_life_timeout() -> void:
 	queue_free()
+
+#
+#func _on_area_entered(area):
+	#if area.name.contains("Enemy") and version == 0:
+		#queue_free()

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwfv5eapxvdhn"]
+[gd_scene load_steps=7 format=3 uid="uid://cwfv5eapxvdhn"]
 
 [ext_resource type="PackedScene" uid="uid://cvs6bk0damlml" path="res://Scene/player.tscn" id="1_2qs2a"]
 [ext_resource type="PackedScene" uid="uid://dfwpt7hhliyk2" path="res://Scene/bg.tscn" id="1_lx4vk"]
 [ext_resource type="PackedScene" uid="uid://c64584hh27ewm" path="res://Scene/lizard_enemy.tscn" id="3_862p7"]
 [ext_resource type="PackedScene" uid="uid://dsof4d8u8c5jb" path="res://Scene/snake_enemy.tscn" id="4_7ndrq"]
 [ext_resource type="PackedScene" uid="uid://c6ba0bouchylr" path="res://Scene/spawner.tscn" id="5_4sfim"]
+[ext_resource type="Script" path="res://Scene/Camera2D.gd" id="6_rwv11"]
 
 [node name="Main" type="Node2D"]
 
@@ -21,3 +22,7 @@ position = Vector2(1109, 332)
 
 [node name="Spawner" parent="." instance=ExtResource("5_4sfim")]
 position = Vector2(1215, 333)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 326)
+script = ExtResource("6_rwv11")
