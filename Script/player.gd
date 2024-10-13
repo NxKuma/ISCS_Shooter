@@ -34,6 +34,7 @@ func _input(event):
 		var new_projectile = PROJECTILE.instantiate()
 		if Input.is_action_just_pressed("Bomb") and can_bomb:
 			new_projectile.version = 3
+			bombs = 0
 		else:
 			new_projectile.version = 0
 		new_projectile.direction = Vector2.RIGHT

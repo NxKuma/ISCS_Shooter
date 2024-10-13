@@ -33,6 +33,11 @@ func _on_area_entered(area):
 		health -= 50
 		global_position.x += 20
 		var broke = SHUTTER.instantiate()
+		if area.version == 3:
+			broke.version = 1
+			camera_2d.apply_shake(20.0)
+		else:
+			broke.version = 0
 		broke.position = area.position
 		broke.emitting = true
 		add_sibling(broke)
@@ -66,9 +71,12 @@ func damaged():
 		queue_free()
 
 func summon():
-	var pickup = PICKUP.instantiate()
-	pickup.global_position = global_position
-	add_sibling(pickup)
+	var willbomb:int = randi_range(1,20)
+	if willbomb % 2== 0:
+		var pickup = PICKUP.instantiate()
+		pickup.global_position = global_position
+		add_sibling(pickup)
+	
 	
 
 func _on_wake_timeout():

@@ -18,6 +18,7 @@ var health:int = 100
 
 const PROJECTILE = preload("res://Scene/projectile.tscn")
 const SHUTTER = preload("res://Scene/Bullet_shatter.tscn")
+const PICKUP = preload("res://Scene/pickup.tscn")
 
 func _ready():
 	timer.wait_time = shoot_speed
@@ -49,6 +50,11 @@ func _on_area_entered(area):
 		global_position.x += 20
 		health -= 30
 		var broke = SHUTTER.instantiate()
+		if area.version == 3:
+			broke.version = 1
+			camera_2d.apply_shake(20.0)
+		else:
+			broke.version = 0
 		broke.position = area.position
 		broke.emitting = true
 		add_sibling(broke)
@@ -75,6 +81,7 @@ func damaged():
 	wake.start()
 	if health <= 0:
 		is_dead = true
+		summon()
 		animated_sprite_2d.visible = false
 		collision_shape_2d.disabled = true
 		particle.emitting = true
@@ -82,6 +89,12 @@ func damaged():
 		await get_tree().create_timer(1.0).timeout
 		queue_free()
 
+func summon():
+	var willbomb:int = randi_range(1,20)
+	if willbomb == 8:
+		var pickup = PICKUP.instantiate()
+		pickup.global_position = global_position
+		add_sibling(pickup)
 
 func _on_wake_timeout():
 	animated_sprite_2d.material.set("shader_parameter/Enabled", false)
