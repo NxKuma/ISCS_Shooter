@@ -30,9 +30,11 @@ region = Rect2(96, 0, 32, 32)
 [node name="Particle Effect" type="Node2D"]
 
 [node name="Glass" type="GPUParticles2D" parent="."]
+emitting = false
 amount = 9
 process_material = SubResource("ParticleProcessMaterial_r34d1")
 texture = SubResource("AtlasTexture_1jrns")
+one_shot = true
 explosiveness = 1.0
 randomness = 1.0
 
@@ -41,3 +43,4 @@ emitting = false
 amount = 1
 process_material = SubResource("ParticleProcessMaterial_qykhm")
 texture = SubResource("AtlasTexture_pes2m")
+one_shot = true

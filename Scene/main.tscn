@@ -22,10 +22,10 @@ position = Vector2(136, 336)
 position = Vector2(1310, 326)
 
 [node name="SnakeEnemy" parent="." instance=ExtResource("4_7ndrq")]
-position = Vector2(1109, 332)
+position = Vector2(1246, 204)
 
 [node name="Spawner" parent="." instance=ExtResource("5_4sfim")]
-position = Vector2(1161, 326)
+position = Vector2(1195, 326)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 326)
