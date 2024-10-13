@@ -6,6 +6,7 @@ extends Area2D
 @onready var animated_sprite_2d:AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape_2d:CollisionShape2D = $CollisionShape2D
 @onready var wake:Timer = $Wake
+@onready var camera_2d:Camera2D = $"../Camera2D"
 
 const PROJECTILE = preload("res://Scene/particle_effect.tscn")
 const SHUTTER = preload("res://Scene/Bullet_shatter.tscn")
@@ -28,21 +29,39 @@ func _process(delta: float) -> void:
 func _on_area_entered(area):
 	if area.is_in_group("PlayerBullet") and !is_dead:
 		area.queue_free()
+		health -= 50
+		global_position.x += 20
 		var broke = SHUTTER.instantiate()
 		broke.position = area.position
 		broke.emitting = true
 		add_sibling(broke)
+		damaged()
+		
+	
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group('Player'): 
+		#Edit Player Values
+		body.health -= 30
+		body.animated_sprite_2d.material.set("shader_parameter/Enabled", true)
+		body.wake.start()
+		body.set_process(false)
+		
+		camera_2d.apply_shake(8.0)
+		
 		health -= 50
-		global_position.x += 20
-		animated_sprite_2d.material.set("shader_parameter/Enabled", true)
-		wake.start()
-		if health <= 0:
-			is_dead = true
-			animated_sprite_2d.visible = false
-			snake.emitting = true
-			set_process(false)
-			await get_tree().create_timer(1.0).timeout
-			queue_free()
+		damaged();
+		print_debug("hi snake")
+
+func damaged():
+	animated_sprite_2d.material.set("shader_parameter/Enabled", true)
+	wake.start()
+	if health <= 0:
+		is_dead = true
+		animated_sprite_2d.visible = false
+		snake.emitting = true
+		set_process(false)
+		await get_tree().create_timer(1.0).timeout
+		queue_free()
 
 func _on_wake_timeout():
 	animated_sprite_2d.material.set("shader_parameter/Enabled", false)

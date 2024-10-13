@@ -71,7 +71,7 @@ gravity = Vector3(0, 98, 0)
 atlas = ExtResource("2_6btb3")
 region = Rect2(96, 0, 32, 32)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_i7681")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Player"]]
