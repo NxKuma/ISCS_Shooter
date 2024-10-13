@@ -7,6 +7,9 @@ extends CharacterBody2D
 @onready var collision_shape_2d:CollisionShape2D = $CollisionShape2D
 @onready var glass:GPUParticles2D = $Glass
 @onready var death:GPUParticles2D = $Player
+@onready var bgm: AudioStreamPlayer2D = $"../BGM"
+@onready var death_sfx: AudioStreamPlayer2D = $DeathSFX
+@onready var pew_sfx: AudioStreamPlayer2D = $PewSFX
 
 const PROJECTILE = preload("res://Scene/projectile.tscn")
 var screen_size:Vector2
@@ -17,6 +20,7 @@ var can_bomb:bool = false
 
 func _ready():
 	screen_size = get_viewport_rect().size
+	bgm.play()
  
 func _process(delta: float) -> void:
 	var movement := Input.get_vector("Left", "Right", "Up", "Down")
@@ -29,6 +33,7 @@ func _process(delta: float) -> void:
 	move_and_slide()
 	
 	if health <= 0:
+		death_sfx.play()
 		death_screen.visible = true
 		bombs = 0
 		animated_sprite_2d.visible = false
@@ -42,6 +47,7 @@ func _input(event):
 		animated_sprite_2d.play("Shoot")
 		var new_projectile = PROJECTILE.instantiate()
 		if Input.is_action_just_pressed("Bomb") and can_bomb:
+			pew_sfx.play()
 			new_projectile.version = 3
 			bombs = 0
 		else:

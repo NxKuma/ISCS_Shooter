@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://i4q0b7c4fae"]
+[gd_scene load_steps=11 format=3 uid="uid://0e5thna01ttx"]
 
 [ext_resource type="Texture2D" uid="uid://cghq7g5eeehst" path="res://Art/Sprites/Bullet.png" id="1_3bis3"]
 [ext_resource type="Script" path="res://Script/Bullet_shatter.gd" id="2_l05fu"]
+[ext_resource type="AudioStream" uid="uid://4aa5spe7jmnu" path="res://Audio/Metal pipe falling sound effect but its more violent.mp3" id="3_87ban"]
 
 [sub_resource type="Curve" id="Curve_c5mb3"]
 _data = [Vector2(0.0333333, 1), 0.0, 0.0, 0, 0, Vector2(0.4, 0.725275), 0.0, 0.0, 0, 0, Vector2(0.726667, 0.472527), 0.0, 0.0, 0, 0, Vector2(0.886667, 0.0659341), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -50,6 +51,9 @@ script = ExtResource("2_l05fu")
 [node name="BombShape" type="CollisionShape2D" parent="Bomb"]
 scale = Vector2(60, 60)
 shape = SubResource("CircleShape2D_egmkk")
+
+[node name="BombSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_87ban")
 
 [connection signal="finished" from="." to="." method="_on_finished"]
 [connection signal="area_entered" from="Bomb" to="." method="_on_bomb_area_entered"]

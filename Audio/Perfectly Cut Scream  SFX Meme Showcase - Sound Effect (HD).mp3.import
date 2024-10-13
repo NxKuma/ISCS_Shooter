@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dtbqgywvfy18p"
+path="res://.godot/imported/Perfectly Cut Scream  SFX Meme Showcase - Sound Effect (HD).mp3-5bc38ad081f13862f846b12d508d35f8.mp3str"
+
+[deps]
+
+source_file="res://Audio/Perfectly Cut Scream  SFX Meme Showcase - Sound Effect (HD).mp3"
+dest_files=["res://.godot/imported/Perfectly Cut Scream  SFX Meme Showcase - Sound Effect (HD).mp3-5bc38ad081f13862f846b12d508d35f8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

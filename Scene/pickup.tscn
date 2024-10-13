@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://csncdnv61n54b"]
+[gd_scene load_steps=10 format=3 uid="uid://bk6u52kcj38pb"]
 
 [ext_resource type="Script" path="res://Script/pickup.gd" id="1_2n71w"]
 [ext_resource type="Texture2D" uid="uid://02p2kmcuyvp3" path="res://Art/Particles/Pickup.png" id="1_fjlb0"]
+[ext_resource type="AudioStream" uid="uid://w7bf1et4omcu" path="res://Audio/Minecraft Eating - Sound Effect (HD).mp3" id="3_5tim3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ue81f"]
 radius = 4.12311
@@ -53,5 +54,9 @@ shape = SubResource("CircleShape2D_ue81f")
 sprite_frames = SubResource("SpriteFrames_qv8xy")
 autoplay = "default"
 frame_progress = 0.515769
+
+[node name="PickupSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_5tim3")
+volume_db = 5.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

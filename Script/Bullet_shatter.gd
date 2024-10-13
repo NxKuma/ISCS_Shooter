@@ -1,5 +1,7 @@
 extends GPUParticles2D
 
+@onready var bomb_sfx: AudioStreamPlayer2D = $BombSFX
+
 var version: int = 0
 
 func _ready():
@@ -15,7 +17,8 @@ func _ready():
 		process_material.radial_velocity_max = 1000
 		process_material.scale_min = 30
 		process_material.scale_max = 50
-		
+		bomb_sfx.play()
+
 func _on_finished():
 	queue_free()
 

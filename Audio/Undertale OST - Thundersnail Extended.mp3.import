@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c0jfcvj0ans5t"
+path="res://.godot/imported/Undertale OST - Thundersnail Extended.mp3-1e1b2307b64faffa16f2d8eb0d2ca365.mp3str"
+
+[deps]
+
+source_file="res://Audio/Undertale OST - Thundersnail Extended.mp3"
+dest_files=["res://.godot/imported/Undertale OST - Thundersnail Extended.mp3-1e1b2307b64faffa16f2d8eb0d2ca365.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
