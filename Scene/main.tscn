@@ -10,14 +10,25 @@
 
 [node name="BG" parent="." instance=ExtResource("1_lx4vk")]
 
-[node name="Player" parent="." instance=ExtResource("1_2qs2a")]
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("1_2qs2a")]
 position = Vector2(136, 336)
 
-[node name="LizardEnemy" parent="." instance=ExtResource("3_862p7")]
+[node name="LizardEnemy" parent="." groups=["enemy"] instance=ExtResource("3_862p7")]
 position = Vector2(1310, 326)
 
-[node name="SnakeEnemy" parent="." instance=ExtResource("4_7ndrq")]
+[node name="SnakeEnemy" parent="." groups=["enemy"] instance=ExtResource("4_7ndrq")]
 position = Vector2(1109, 332)
 
 [node name="Spawner" parent="." instance=ExtResource("5_4sfim")]
+<<<<<<< Updated upstream
 position = Vector2(1215, 333)
+=======
+position = Vector2(1161, 326)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 326)
+script = ExtResource("6_rwv11")
+
+[connection signal="body_entered" from="LizardEnemy" to="LizardEnemy" method="_on_body_entered"]
+[connection signal="body_entered" from="SnakeEnemy" to="SnakeEnemy" method="_on_body_entered"]
+>>>>>>> Stashed changes
