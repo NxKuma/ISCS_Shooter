@@ -1,26 +1,18 @@
 extends CharacterBody2D
 
-<<<<<<< Updated upstream
-=======
 @onready var animated_sprite_2d:AnimatedSprite2D = $AnimatedSprite2D
 @onready var player:GPUParticles2D = $Player2
 @export var speed:int = 400.0
->>>>>>> Stashed changes
 
-@export var speed = 400.0
-var screen_size
 const PROJECTILE = preload("res://Scene/projectile.tscn")
-<<<<<<< Updated upstream
-=======
 var screen_size:Vector2
 var health:float  = 500
 var is_dead:bool = false
 var hit:bool = false
->>>>>>> Stashed changes
 
 func _ready():
 	screen_size = get_viewport_rect().size
-
+ 
 func _process(delta: float) -> void:
 	var movement := Input.get_vector("Left", "Right", "Up", "Down")
 	
@@ -29,13 +21,6 @@ func _process(delta: float) -> void:
 	else:
 		velocity = Vector2.ZERO
 	
-<<<<<<< Updated upstream
-	position += velocity * delta
-	position = position.clamp(Vector2.ZERO, screen_size)
-	
-	move_and_slide()
-
-=======
 	position += velocity * delta  
 	position = position.clamp(Vector2(32,32), Vector2((screen_size.x-160)/2,screen_size.y-32))
 	
@@ -57,13 +42,10 @@ func _process(delta: float) -> void:
 			#queue_free()
 
 func _input(event):
->>>>>>> Stashed changes
 	if Input.is_action_just_pressed("Shoot"):
+		animated_sprite_2d.play("Shoot")
 		var new_projectile = PROJECTILE.instantiate()
+		new_projectile.version = 0
 		new_projectile.direction = Vector2.RIGHT
-		new_projectile.global_position = global_position
+		new_projectile.global_position = Vector2(global_position.x + 42, global_position.y + 5)
 		add_sibling(new_projectile)
-<<<<<<< Updated upstream
-		
-=======
->>>>>>> Stashed changes
