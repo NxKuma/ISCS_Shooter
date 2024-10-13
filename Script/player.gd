@@ -33,7 +33,7 @@ func _process(delta: float) -> void:
 	move_and_slide()
 	
 	if health <= 0:
-		death_sfx.play()
+		death_sfx.play(0.02)
 		death_screen.visible = true
 		bombs = 0
 		animated_sprite_2d.visible = false
@@ -47,7 +47,7 @@ func _input(event):
 		animated_sprite_2d.play("Shoot")
 		var new_projectile = PROJECTILE.instantiate()
 		if Input.is_action_just_pressed("Bomb") and can_bomb:
-			pew_sfx.play()
+			pew_sfx.play(0.21)
 			new_projectile.version = 3
 			bombs = 0
 		else:

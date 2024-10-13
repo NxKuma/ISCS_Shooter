@@ -17,7 +17,7 @@ func _ready():
 		process_material.radial_velocity_max = 1000
 		process_material.scale_min = 30
 		process_material.scale_max = 50
-		bomb_sfx.play()
+		bomb_sfx.play(0.16)
 
 func _on_finished():
 	queue_free()

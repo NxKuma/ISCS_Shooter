@@ -55,8 +55,7 @@ func _on_body_entered(body: Node2D) -> void:
 		camera_2d.apply_shake(8.0)
 		
 		health -= 50
-		damaged();
-		print_debug("hi snake")
+		damaged()
 
 func damaged():
 	animated_sprite_2d.material.set("shader_parameter/Enabled", true)
@@ -72,7 +71,7 @@ func damaged():
 
 func summon():
 	var willbomb:int = randi_range(1,20)
-	if willbomb % 2== 0:
+	if willbomb == 6:
 		var pickup = PICKUP.instantiate()
 		pickup.global_position = global_position
 		add_sibling(pickup)

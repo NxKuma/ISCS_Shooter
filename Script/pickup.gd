@@ -12,7 +12,7 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body.is_in_group('Player'): 
-		pickup_sfx.play()
+		pickup_sfx.play(0.11)
 		sprite.visible = false
 		await get_tree().create_timer(0.7).timeout
 		body.bombs += 1
