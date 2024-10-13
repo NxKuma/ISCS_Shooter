@@ -7,12 +7,13 @@ func _ready() -> void:
 	self.visible = false
 	
 func _process(float) -> void:
-	if ui.bar.scale.x == 500:
+	if player.health == 0:
 		self.visible = true 
 
 func _on_pressed() -> void:
 	self.visible = false
-	player.get_child(0).visible = true
+	player.animated_sprite_2d.visible = true
+	player.health = 500
 	player.velocity = Vector2.ZERO
-	player.get_child(1).disabled = false
-	player.position = Vector2()
+	player.collision_shape_2d.disabled = false
+	player.position = Vector2(136,336)

@@ -3,7 +3,10 @@ extends CharacterBody2D
 @onready var animated_sprite_2d:AnimatedSprite2D = $AnimatedSprite2D
 @export var speed:int = 400.0
 @onready var wake:Timer = $Wake
-@onready var death_screen = $"../DeathScreen"
+@onready var death_screen:CanvasLayer = $"../DeathScreen"
+@onready var collision_shape_2d:CollisionShape2D = $CollisionShape2D
+@onready var glass:GPUParticles2D = $Glass
+@onready var death:GPUParticles2D = $Player
 
 
 
@@ -19,20 +22,21 @@ func _ready():
  
 func _process(delta: float) -> void:
 	var movement := Input.get_vector("Left", "Right", "Up", "Down")
-	
 	if movement:
 		velocity = movement * speed
 	else:
 		velocity = Vector2.ZERO
-	
 	position += velocity * delta 
 	position = position.clamp(Vector2(32,32), Vector2((screen_size.x-160)/2,screen_size.y-32))
-	
 	move_and_slide()
-	
 	
 	if health <= 0:
 		death_screen.visible = true
+		animated_sprite_2d.visible = false
+		collision_shape_2d.disabled = true
+		glass.emitting = true
+		death.emitting = true
+		set_process(false)
 
 func _input(event):
 	if Input.is_action_just_pressed("Shoot") or Input.is_action_just_pressed("Bomb"):

@@ -52,8 +52,8 @@ emission_shape_offset = Vector3(0, 30, 0)
 angle_min = -582.5
 angle_max = 90.0
 gravity = Vector3(0, 98, 0)
-scale_min = 0.0
-scale_max = 1.5
+scale_min = 3.0
+scale_max = 4.5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_83878"]
 atlas = ExtResource("2_6btb3")
@@ -66,6 +66,8 @@ direction = Vector3(0, 1, 0)
 angular_velocity_min = -420.67
 angular_velocity_max = 1.25
 gravity = Vector3(0, 98, 0)
+scale_min = 3.0
+scale_max = 3.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eh0bb"]
 atlas = ExtResource("2_6btb3")
@@ -88,6 +90,7 @@ scale = Vector2(4, 4)
 shape = SubResource("RectangleShape2D_ltp1e")
 
 [node name="Glass" type="GPUParticles2D" parent="."]
+scale = Vector2(3, 3)
 emitting = false
 amount = 9
 process_material = SubResource("ParticleProcessMaterial_v1l6v")
@@ -97,6 +100,7 @@ explosiveness = 1.0
 randomness = 1.0
 
 [node name="Player" type="GPUParticles2D" parent="."]
+scale = Vector2(3, 3)
 emitting = false
 amount = 1
 process_material = SubResource("ParticleProcessMaterial_f0bao")

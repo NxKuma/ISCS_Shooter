@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.name.contains('Player') and version !=0 : 
 		#Edit Player Values
-		body.health -= 10
+		body.health -= 50
 		body.animated_sprite_2d.material.set("shader_parameter/Enabled", true)
 		body.wake.start()
 		body.set_process(false)
