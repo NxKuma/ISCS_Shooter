@@ -50,6 +50,7 @@ script = ExtResource("2_l05fu")
 [node name="BombShape" type="CollisionShape2D" parent="Bomb"]
 scale = Vector2(60, 60)
 shape = SubResource("CircleShape2D_egmkk")
+disabled = true
 
 [connection signal="finished" from="." to="." method="_on_finished"]
 [connection signal="area_entered" from="Bomb" to="." method="_on_bomb_area_entered"]

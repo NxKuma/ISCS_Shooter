@@ -61,7 +61,6 @@ func _on_area_entered(area):
 		damaged()
 
 func _on_body_entered(body: Node2D) -> void:
-	print(body.name)
 	if body.is_in_group('Player'): 
 		#Edit Player Values
 		body.health -= 10
@@ -73,7 +72,6 @@ func _on_body_entered(body: Node2D) -> void:
 		
 		health -= 50
 		damaged()
-		print_debug("snake")
 
 
 func damaged():

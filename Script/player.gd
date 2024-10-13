@@ -8,8 +8,6 @@ extends CharacterBody2D
 @onready var glass:GPUParticles2D = $Glass
 @onready var death:GPUParticles2D = $Player
 
-
-
 const PROJECTILE = preload("res://Scene/projectile.tscn")
 var screen_size:Vector2
 var health:float = 500
@@ -32,6 +30,7 @@ func _process(delta: float) -> void:
 	
 	if health <= 0:
 		death_screen.visible = true
+		bombs = 0
 		animated_sprite_2d.visible = false
 		collision_shape_2d.disabled = true
 		glass.emitting = true

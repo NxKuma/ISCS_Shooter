@@ -22,4 +22,5 @@ func _on_finished():
 
 func _on_bomb_area_entered(area):
 	if version != 0:
+		get_child(0).disabled = false
 		area.queue_free()
