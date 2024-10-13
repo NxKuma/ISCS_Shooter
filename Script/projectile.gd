@@ -14,10 +14,14 @@ func _ready():
 		animated_sprite_2d.play("Player")
 		add_to_group("PlayerBullet")
 		speed = 800
-	else:
+	elif version == 2:
 		animated_sprite_2d.play("Enemy")
 		animated_sprite_2d.flip_h = true
 		add_to_group("EnemyBullet")
+	else:
+		animated_sprite_2d.play("Bomb")
+		add_to_group("PlayerBullet")
+		speed = 500
 
 func _process(delta: float) -> void:
 	translate(direction * speed * delta)

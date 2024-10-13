@@ -2,16 +2,16 @@
 
 [ext_resource type="Script" path="res://Script/ui.gd" id="1_456qi"]
 [ext_resource type="Texture2D" uid="uid://cbtua3up1enpu" path="res://Art/Particles/Health.png" id="1_cypcl"]
-[ext_resource type="Texture2D" uid="uid://b2amdmwsgq027" path="res://Art/Particles/Health2.png" id="1_uwacd"]
+[ext_resource type="Texture2D" uid="uid://dytjjgg0qjn57" path="res://Art/Particles/Health3.png" id="2_8tj23"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_456qi")
 
 [node name="HealthBar" type="Sprite2D" parent="."]
 scale = Vector2(5, 5)
-texture = ExtResource("1_uwacd")
+texture = ExtResource("2_8tj23")
 centered = false
-hframes = 3
+hframes = 4
 
 [node name="Bar" type="Sprite2D" parent="."]
 position = Vector2(64, 42)
@@ -22,9 +22,18 @@ offset = Vector2(-12.8, -8.4)
 hframes = 3
 frame = 1
 
+[node name="BombBar" type="Sprite2D" parent="."]
+position = Vector2(80, 68)
+scale = Vector2(5, 5)
+texture = ExtResource("2_8tj23")
+centered = false
+offset = Vector2(-16, -13.6)
+hframes = 4
+frame = 1
+
 [node name="Borders" type="Sprite2D" parent="."]
 scale = Vector2(5, 5)
-texture = ExtResource("1_uwacd")
+texture = ExtResource("2_8tj23")
 centered = false
-hframes = 3
-frame = 2
+hframes = 4
+frame = 3

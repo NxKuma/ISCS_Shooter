@@ -10,6 +10,7 @@ extends Area2D
 
 const PROJECTILE = preload("res://Scene/particle_effect.tscn")
 const SHUTTER = preload("res://Scene/Bullet_shatter.tscn")
+const PICKUP = preload("res://Scene/pickup.tscn")
 
 var screen_size:Vector2
 var is_hit:bool = false
@@ -57,11 +58,18 @@ func damaged():
 	wake.start()
 	if health <= 0:
 		is_dead = true
+		summon()
 		animated_sprite_2d.visible = false
 		snake.emitting = true
 		set_process(false)
 		await get_tree().create_timer(1.0).timeout
 		queue_free()
+
+func summon():
+	var pickup = PICKUP.instantiate()
+	pickup.global_position = global_position
+	add_sibling(pickup)
+	
 
 func _on_wake_timeout():
 	animated_sprite_2d.material.set("shader_parameter/Enabled", false)
