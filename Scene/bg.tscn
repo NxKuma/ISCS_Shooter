@@ -49,6 +49,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 script = SubResource("GDScript_cp3cu")
 
 [node name="Blue" type="Sprite2D" parent="."]
