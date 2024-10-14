@@ -16,6 +16,7 @@ func _ready():
 		speed = 800
 	elif version == 2:
 		animated_sprite_2d.play("Enemy")
+		speed = 700
 		animated_sprite_2d.flip_h = true
 		add_to_group("EnemyBullet")
 	else:

@@ -28,7 +28,7 @@ func parallax(sprite: Sprite2D, x: float, speed: float):
 	sprite.set_region_rect(Rect2(Vector2(x*speed,0),Vector2(1152,452)))
 
 func _process(delta: float) -> void:
-	x += 1
+	x += 3
 	parallax(cloud_1_sprite, x, 1)
 	parallax(cloud_2_sprite, x, 0.6)
 	parallax(cloud_3_sprite, x, 0.4)
@@ -37,6 +37,7 @@ func _process(delta: float) -> void:
 	parallax(forest_lg, x, 1.4)
 	parallax(forest_light, x, 1.8)
 	parallax(cloud, x, 1.8)
+
 "
 
 [node name="BG" type="Control"]
