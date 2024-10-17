@@ -1,6 +1,7 @@
 extends GPUParticles2D
 
 @onready var bomb_sfx: AudioStreamPlayer2D = $BombSFX
+@onready var ui:CanvasLayer = $"../UI"
 
 var version: int = 0
 
@@ -26,3 +27,5 @@ func _on_finished():
 func _on_bomb_area_entered(area):
 	if version != 0:
 		area.queue_free()
+		ui.points += 200
+		

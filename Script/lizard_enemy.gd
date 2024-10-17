@@ -3,6 +3,7 @@ extends Area2D
 @export var speed:float = 100.0
 @export var direction:Vector2 = Vector2.LEFT
 
+@onready var ui:CanvasLayer = $"../UI"
 @onready var animated_sprite_2d:AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer:Timer = $Reload
 @onready var particle:GPUParticles2D = $Particle2
@@ -89,7 +90,7 @@ func damaged():
 
 func summon():
 	var willbomb:int = randi_range(1,20)
-	if willbomb == 8:
+	if willbomb == 5:
 		var pickup = PICKUP.instantiate()
 		pickup.global_position = global_position
 		add_sibling(pickup)
@@ -101,3 +102,7 @@ func _on_wake_timeout():
 func _on_reload_timeout():
 	if !is_dead:
 		shoot()
+
+
+func _on_tree_exited():
+	ui.points += 200

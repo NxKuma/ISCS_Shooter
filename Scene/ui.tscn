@@ -37,3 +37,20 @@ texture = ExtResource("2_8tj23")
 centered = false
 hframes = 4
 frame = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = -1
+anchor_left = 0.766493
+anchor_right = 1.10243
+anchor_bottom = 0.123457
+offset_left = -138.0
+offset_top = 27.0
+offset_right = -98.0
+offset_bottom = 67.0
+grow_horizontal = 0
+size_flags_vertical = 0
+bbcode_enabled = true
+text = "[font_size=30]
+[font=./Fonts/04B11-xrr.TTF]Score: 00"
+fit_content = true
+metadata/_edit_use_anchors_ = true

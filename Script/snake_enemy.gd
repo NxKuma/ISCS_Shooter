@@ -7,6 +7,7 @@ extends Area2D
 @onready var collision_shape_2d:CollisionShape2D = $CollisionShape2D
 @onready var wake:Timer = $Wake
 @onready var camera_2d:Camera2D = $"../Camera2D"
+@onready var ui:CanvasLayer = $"../UI"
 
 const PROJECTILE = preload("res://Scene/particle_effect.tscn")
 const SHUTTER = preload("res://Scene/Bullet_shatter.tscn")
@@ -62,6 +63,7 @@ func damaged():
 	wake.start()
 	if health <= 0:
 		is_dead = true
+		collision_shape_2d.disabled = true
 		summon()
 		animated_sprite_2d.visible = false
 		snake.emitting = true
@@ -71,7 +73,7 @@ func damaged():
 
 func summon():
 	var willbomb:int = randi_range(1,20)
-	if willbomb == 6:
+	if willbomb == 1:
 		var pickup = PICKUP.instantiate()
 		pickup.global_position = global_position
 		add_sibling(pickup)
@@ -80,3 +82,7 @@ func summon():
 
 func _on_wake_timeout():
 	animated_sprite_2d.material.set("shader_parameter/Enabled", false)
+
+
+func _on_tree_exited():
+	ui.points += 100
