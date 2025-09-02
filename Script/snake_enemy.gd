@@ -21,7 +21,7 @@ var health:int = 100
 func _ready():
 	health = 100
 	screen_size = get_viewport_rect().size 
-
+	
 func _process(delta: float) -> void:
 	translate(direction * speed * delta)
 	#deletes the lizard instance when it is sufficiently out of screen

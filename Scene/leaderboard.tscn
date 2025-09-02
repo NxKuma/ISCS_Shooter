@@ -1,0 +1,334 @@
+[gd_scene load_steps=7 format=3 uid="uid://bxyljv5qwjkfd"]
+
+[ext_resource type="Texture2D" uid="uid://cvif6d6d5pqnd" path="res://Art/Sprites/Cloud.png" id="1_sammm"]
+[ext_resource type="StyleBox" uid="uid://cnexngupavdog" path="res://Art/Styles/Button.tres" id="2_0hbkm"]
+[ext_resource type="FontFile" uid="uid://c6lvyey27i3jh" path="res://Fonts/04B11-xrr.ttf" id="3_iken6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eof0t"]
+bg_color = Color(0.639216, 0.752941, 0.752941, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jsutd"]
+font = ExtResource("3_iken6")
+font_size = 46
+
+[sub_resource type="LabelSettings" id="LabelSettings_n4fxh"]
+font = ExtResource("3_iken6")
+font_size = 36
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -407.0
+offset_top = -307.0
+offset_right = 400.0
+offset_bottom = 322.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_sammm")
+patch_margin_left = 76
+patch_margin_top = 62
+patch_margin_right = 84
+patch_margin_bottom = 77
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 254.0
+offset_top = 91.0
+offset_right = 892.0
+offset_bottom = 574.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_eof0t")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("2_0hbkm")
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "LEADERBOARD"
+label_settings = SubResource("LabelSettings_jsutd")
+horizontal_alignment = 1
+
+[node name="Panel11" type="Panel" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("2_0hbkm")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="PanelContainer/VBoxContainer/Panel11"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 36.0
+grow_horizontal = 2
+split_offset = 50
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/Panel11/HSplitContainer"]
+layout_mode = 2
+text = "WWWW"
+label_settings = SubResource("LabelSettings_n4fxh")
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/Panel11/HSplitContainer"]
+layout_mode = 2
+text = "99999"
+label_settings = SubResource("LabelSettings_n4fxh")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Panel2" type="Panel" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("2_0hbkm")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="PanelContainer/VBoxContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 36.0
+grow_horizontal = 2
+split_offset = 50
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/Panel2/HSplitContainer"]
+layout_mode = 2
+text = "WWWW"
+label_settings = SubResource("LabelSettings_n4fxh")
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/Panel2/HSplitContainer"]
+layout_mode = 2
+text = "99999"
+label_settings = SubResource("LabelSettings_n4fxh")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Panel3" type="Panel" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("2_0hbkm")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="PanelContainer/VBoxContainer/Panel3"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 36.0
+grow_horizontal = 2
+split_offset = 50
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/Panel3/HSplitContainer"]
+layout_mode = 2
+text = "WWWW"
+label_settings = SubResource("LabelSettings_n4fxh")
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/Panel3/HSplitContainer"]
+layout_mode = 2
+text = "99999"
+label_settings = SubResource("LabelSettings_n4fxh")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Panel4" type="Panel" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("2_0hbkm")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="PanelContainer/VBoxContainer/Panel4"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 36.0
+grow_horizontal = 2
+split_offset = 50
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/Panel4/HSplitContainer"]
+layout_mode = 2
+text = "WWWW"
+label_settings = SubResource("LabelSettings_n4fxh")
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/Panel4/HSplitContainer"]
+layout_mode = 2
+text = "99999"
+label_settings = SubResource("LabelSettings_n4fxh")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Panel5" type="Panel" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("2_0hbkm")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="PanelContainer/VBoxContainer/Panel5"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 36.0
+grow_horizontal = 2
+split_offset = 50
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/Panel5/HSplitContainer"]
+layout_mode = 2
+text = "WWWW"
+label_settings = SubResource("LabelSettings_n4fxh")
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/Panel5/HSplitContainer"]
+layout_mode = 2
+text = "99999"
+label_settings = SubResource("LabelSettings_n4fxh")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Panel6" type="Panel" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("2_0hbkm")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="PanelContainer/VBoxContainer/Panel6"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 36.0
+grow_horizontal = 2
+split_offset = 50
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/Panel6/HSplitContainer"]
+layout_mode = 2
+text = "WWWW"
+label_settings = SubResource("LabelSettings_n4fxh")
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/Panel6/HSplitContainer"]
+layout_mode = 2
+text = "99999"
+label_settings = SubResource("LabelSettings_n4fxh")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Panel7" type="Panel" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("2_0hbkm")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="PanelContainer/VBoxContainer/Panel7"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 36.0
+grow_horizontal = 2
+split_offset = 50
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/Panel7/HSplitContainer"]
+layout_mode = 2
+text = "WWWW"
+label_settings = SubResource("LabelSettings_n4fxh")
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/Panel7/HSplitContainer"]
+layout_mode = 2
+text = "99999"
+label_settings = SubResource("LabelSettings_n4fxh")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Panel8" type="Panel" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("2_0hbkm")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="PanelContainer/VBoxContainer/Panel8"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 36.0
+grow_horizontal = 2
+split_offset = 50
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/Panel8/HSplitContainer"]
+layout_mode = 2
+text = "WWWW"
+label_settings = SubResource("LabelSettings_n4fxh")
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/Panel8/HSplitContainer"]
+layout_mode = 2
+text = "99999"
+label_settings = SubResource("LabelSettings_n4fxh")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Panel9" type="Panel" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("2_0hbkm")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="PanelContainer/VBoxContainer/Panel9"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 36.0
+grow_horizontal = 2
+split_offset = 50
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/Panel9/HSplitContainer"]
+layout_mode = 2
+text = "WWWW"
+label_settings = SubResource("LabelSettings_n4fxh")
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/Panel9/HSplitContainer"]
+layout_mode = 2
+text = "99999"
+label_settings = SubResource("LabelSettings_n4fxh")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Panel10" type="Panel" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("2_0hbkm")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="PanelContainer/VBoxContainer/Panel10"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 36.0
+grow_horizontal = 2
+split_offset = 50
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/Panel10/HSplitContainer"]
+layout_mode = 2
+text = "WWWW"
+label_settings = SubResource("LabelSettings_n4fxh")
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/Panel10/HSplitContainer"]
+layout_mode = 2
+text = "99999"
+label_settings = SubResource("LabelSettings_n4fxh")
+horizontal_alignment = 2
+vertical_alignment = 1

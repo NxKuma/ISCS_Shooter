@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://cwfv5eapxvdhn"]
+[gd_scene load_steps=11 format=3 uid="uid://cwfv5eapxvdhn"]
 
 [ext_resource type="PackedScene" uid="uid://cvs6bk0damlml" path="res://Scene/player.tscn" id="1_2qs2a"]
+[ext_resource type="PackedScene" uid="uid://cxgal8u74b5lj" path="res://Scene/pause_menu.tscn" id="1_3iqvw"]
 [ext_resource type="PackedScene" uid="uid://dfwpt7hhliyk2" path="res://Scene/bg.tscn" id="1_lx4vk"]
 [ext_resource type="PackedScene" uid="uid://coudr40q088ao" path="res://Scene/ui.tscn" id="1_ucg4y"]
 [ext_resource type="PackedScene" uid="uid://c64584hh27ewm" path="res://Scene/lizard_enemy.tscn" id="3_862p7"]
@@ -11,6 +12,9 @@
 [ext_resource type="AudioStream" uid="uid://c0jfcvj0ans5t" path="res://Audio/Undertale OST - Thundersnail Extended.mp3" id="9_4mhmg"]
 
 [node name="Main" type="Node2D"]
+
+[node name="Pause menu" parent="." instance=ExtResource("1_3iqvw")]
+visible = false
 
 [node name="UI" parent="." instance=ExtResource("1_ucg4y")]
 

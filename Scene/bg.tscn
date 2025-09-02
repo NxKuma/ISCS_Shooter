@@ -37,7 +37,6 @@ func _process(delta: float) -> void:
 	parallax(forest_lg, x, 1.4)
 	parallax(forest_light, x, 1.8)
 	parallax(cloud, x, 1.8)
-
 "
 
 [node name="BG" type="Control"]

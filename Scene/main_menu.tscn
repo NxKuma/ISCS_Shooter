@@ -1,0 +1,153 @@
+[gd_scene load_steps=10 format=3 uid="uid://dw50e42utrjt"]
+
+[ext_resource type="Script" path="res://Script/main_menu.gd" id="1_f61u1"]
+[ext_resource type="PackedScene" uid="uid://dfwpt7hhliyk2" path="res://Scene/bg.tscn" id="2_2atkx"]
+[ext_resource type="Texture2D" uid="uid://ojr0140mutip" path="res://Art/Sprites/iCON.png" id="3_lg6m5"]
+[ext_resource type="FontFile" uid="uid://c6lvyey27i3jh" path="res://Fonts/04B11-xrr.ttf" id="4_327g5"]
+[ext_resource type="StyleBox" uid="uid://bnnlmykyj67yl" path="res://Scenes/Button_Alt.tres" id="5_6h5ij"]
+[ext_resource type="StyleBox" uid="uid://cnexngupavdog" path="res://Art/Styles/Button.tres" id="6_o6myp"]
+
+[sub_resource type="Animation" id="Animation_haex1"]
+resource_name = "Idle Title"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ICon:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.139626, 0.139626]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ICon:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.53333, 2),
+"transitions": PackedFloat32Array(1, 0.406126, 1, 0.25, 1),
+"update": 0,
+"values": [Vector2(1.25, 1.25), Vector2(1.155, 1.155), Vector2(1.25, 1.25), Vector2(1.15, 1.15), Vector2(1.25, 1.25)]
+}
+
+[sub_resource type="Animation" id="Animation_u1cbu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ICon:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ICon:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.155, 1.155)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mdwko"]
+_data = {
+"Idle Title": SubResource("Animation_haex1"),
+"RESET": SubResource("Animation_u1cbu")
+}
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_f61u1")
+
+[node name="BG" parent="." instance=ExtResource("2_2atkx")]
+
+[node name="ICon" type="Sprite2D" parent="."]
+position = Vector2(566, 242)
+scale = Vector2(1.155, 1.155)
+texture = ExtResource("3_lg6m5")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 563.0
+offset_top = 504.0
+offset_right = 563.0
+offset_bottom = 504.0
+scale = Vector2(0.77, 0.77)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VSplitContainer" type="VSplitContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Start" type="Button" parent="Panel/VBoxContainer/HSplitContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("4_327g5")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = ExtResource("5_6h5ij")
+theme_override_styles/pressed = ExtResource("5_6h5ij")
+theme_override_styles/normal = ExtResource("6_o6myp")
+text = "START"
+
+[node name="Exit" type="Button" parent="Panel/VBoxContainer/HSplitContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.4, 0.654902, 0.647059, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_327g5")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = ExtResource("6_o6myp")
+theme_override_styles/pressed = ExtResource("6_o6myp")
+theme_override_styles/normal = ExtResource("5_6h5ij")
+text = "EXIT"
+
+[node name="Leader" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("4_327g5")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = ExtResource("5_6h5ij")
+theme_override_styles/pressed = ExtResource("5_6h5ij")
+theme_override_styles/normal = ExtResource("6_o6myp")
+text = "LEADER BOARD"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mdwko")
+}
+autoplay = "Idle Title"
+
+[connection signal="pressed" from="Panel/VBoxContainer/HSplitContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/HSplitContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Leader" to="." method="_on_leader_pressed"]

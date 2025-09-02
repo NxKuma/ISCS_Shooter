@@ -23,20 +23,6 @@ func _ready():
 	bgm.play()
  
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("Shoot") or Input.is_action_pressed("Bomb"):
-		animated_sprite_2d.play("Shoot")
-		var new_projectile = PROJECTILE.instantiate()
-		if Input.is_action_just_pressed("Bomb") and can_bomb:
-			pew_sfx.play(0.21)
-			new_projectile.version = 3
-			bombs = 0
-		else:
-			new_projectile.version = 0
-		new_projectile.direction = Vector2.RIGHT
-		new_projectile.global_position = Vector2(global_position.x + 42, global_position.y + 5)
-		add_sibling(new_projectile)
-	
-	
 	var movement := Input.get_vector("Left", "Right", "Up", "Down")
 	if movement:
 		velocity = movement * speed
@@ -54,22 +40,22 @@ func _process(delta: float) -> void:
 		collision_shape_2d.disabled = true
 		glass.emitting = true
 		death.emitting = true
+		DreamLo.submit_score(Info.get_player_name(), Info.get_score())
 		set_process(false)
 
-#func _input(event):
-	#if Input.is_action_pressed("Shoot") or Input.is_action_pressed("Bomb"):
-		#animated_sprite_2d.play("Shoot")
-		#var new_projectile = PROJECTILE.instantiate()
-		#if Input.is_action_just_pressed("Bomb") and can_bomb:
-			#pew_sfx.play(0.21)
-			#new_projectile.version = 3
-			#bombs = 0
-		#else:
-			#new_projectile.version = 0
-		#new_projectile.direction = Vector2.RIGHT
-		#new_projectile.global_position = Vector2(global_position.x + 42, global_position.y + 5)
-		#add_sibling(new_projectile)
-
+func _input(event):
+	if Input.is_action_just_pressed("Shoot") or Input.is_action_just_pressed("Bomb"):
+		animated_sprite_2d.play("Shoot")
+		var new_projectile = PROJECTILE.instantiate()
+		if Input.is_action_just_pressed("Bomb") and can_bomb:
+			pew_sfx.play(0.21)
+			new_projectile.version = 3
+			bombs = 0
+		else:
+			new_projectile.version = 0
+		new_projectile.direction = Vector2.RIGHT
+		new_projectile.global_position = Vector2(global_position.x + 42, global_position.y + 5)
+		add_sibling(new_projectile)
 
 func _on_wake_timeout():
 	animated_sprite_2d.material.set("shader_parameter/Enabled", false)
