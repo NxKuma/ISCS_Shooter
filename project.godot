@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="Iscs Shooter"
+config/name="Fly High Harold"
+config/version="1.5.2"
 run/main_scene="res://Scene/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://Game_Icon.png"
 
 [autoload]
 

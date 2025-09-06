@@ -41,8 +41,9 @@ func _on_area_entered(area):
 			broke.version = 0
 		broke.position = area.position
 		broke.emitting = true
-		add_sibling(broke)
-		damaged()
+		#add_sibling(broke)
+		call_deferred("add_sibling", broke)
+		call_deferred("damaged")
 		
 	
 func _on_body_entered(body: Node2D) -> void:
@@ -56,14 +57,14 @@ func _on_body_entered(body: Node2D) -> void:
 		camera_2d.apply_shake(8.0)
 		
 		health -= 50
-		damaged()
+		call_deferred("damaged")
 
 func damaged():
 	animated_sprite_2d.material.set("shader_parameter/Enabled", true)
 	wake.start()
 	if health <= 0:
 		is_dead = true
-		collision_shape_2d.disabled = true
+		collision_shape_2d.set_deferred("disabled", true)
 		summon()
 		animated_sprite_2d.visible = false
 		snake.emitting = true
@@ -72,11 +73,13 @@ func damaged():
 		queue_free()
 
 func summon():
-	var willbomb:int = randi_range(1,20)
+	var willbomb:int = randi_range(1,7)
 	if willbomb == 1:
 		var pickup = PICKUP.instantiate()
 		pickup.global_position = global_position
-		add_sibling(pickup)
+		#add_sibling(pickup)
+		call_deferred("add_sibling", pickup)
+
 	
 	
 

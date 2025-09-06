@@ -40,7 +40,8 @@ func _on_body_entered(body: Node2D) -> void:
 		var particle = GPU.instantiate()
 		particle.emitting = true
 		particle.position = position
-		add_sibling(particle)
+		#add_sibling(particle)
+		call_deferred("add_sibling", particle)
 		#Delete Bullet
 		queue_free()
 

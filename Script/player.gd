@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var animated_sprite_2d:AnimatedSprite2D = $AnimatedSprite2D
-@export var speed:int = 400.0
+@export var speed:int = 400
 @onready var wake:Timer = $Wake
 @onready var death_screen:CanvasLayer = $"../DeathScreen"
 @onready var collision_shape_2d:CollisionShape2D = $CollisionShape2D
@@ -40,7 +40,6 @@ func _process(delta: float) -> void:
 		collision_shape_2d.disabled = true
 		glass.emitting = true
 		death.emitting = true
-		DreamLo.submit_score(Info.get_player_name(), Info.get_score())
 		set_process(false)
 
 func _input(event):
@@ -55,7 +54,9 @@ func _input(event):
 			new_projectile.version = 0
 		new_projectile.direction = Vector2.RIGHT
 		new_projectile.global_position = Vector2(global_position.x + 42, global_position.y + 5)
-		add_sibling(new_projectile)
+		#add_sibling(new_projectile)
+		call_deferred("add_sibling", new_projectile)
+
 
 func _on_wake_timeout():
 	animated_sprite_2d.material.set("shader_parameter/Enabled", false)

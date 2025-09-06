@@ -58,8 +58,9 @@ func _on_area_entered(area):
 			broke.version = 0
 		broke.position = area.position
 		broke.emitting = true
-		add_sibling(broke)
-		damaged()
+		#add_sibling(broke)
+		call_deferred("add_sibling", broke)
+		call_deferred("damaged")
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group('Player'): 
@@ -72,7 +73,7 @@ func _on_body_entered(body: Node2D) -> void:
 		camera_2d.apply_shake(8.0)
 		
 		health -= 50
-		damaged()
+		call_deferred("damaged")
 
 
 func damaged():
@@ -82,18 +83,20 @@ func damaged():
 		is_dead = true
 		summon()
 		animated_sprite_2d.visible = false
-		collision_shape_2d.disabled = true
+		collision_shape_2d.set_deferred("disabled", true)
 		particle.emitting = true
 		set_process(false)
 		await get_tree().create_timer(1.0).timeout
 		queue_free()
 
 func summon():
-	var willbomb:int = randi_range(1,20)
+	var willbomb:int = randi_range(1,7)
 	if willbomb == 5:
 		var pickup = PICKUP.instantiate()
 		pickup.global_position = global_position
-		add_sibling(pickup)
+		#add_sibling(pickup)
+		call_deferred("add_sibling", pickup)
+
 
 func _on_wake_timeout():
 	animated_sprite_2d.material.set("shader_parameter/Enabled", false)
